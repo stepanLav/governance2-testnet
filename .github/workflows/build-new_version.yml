@@ -12,7 +12,6 @@ env:
 jobs:
   create-release:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
     container:
       image: paritytech/ci-linux:1c0fde6a-20220811
 
