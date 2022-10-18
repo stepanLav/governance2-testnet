@@ -16,25 +16,28 @@ jobs:
       image: paritytech/ci-linux:1c0fde6a-20220811
 
     steps:
-      - uses: actions/checkout@v2
+      # - uses: actions/checkout@v2
 
-      - uses: rickstaa/action-create-tag@v1
-        with:
-          tag: ${{ env.tag }}
-          message: ${{ env.message }}
+      - name: Debug
+        run: rustc --print target-list
 
-      - name: Build release
-        run: cargo build --release
+      # - uses: rickstaa/action-create-tag@v1
+      #   with:
+      #     tag: ${{ env.tag }}
+      #     message: ${{ env.message }}
 
-      - name: Rename artifacts
-        run: mv ./target/release/governance2 ./target/release/governance2-${{ env.tag }}
+      # - name: Build release
+      #   run: cargo build --release
 
-      - name: Create Release
-        id: create_release
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: ${{ env.tag }}
-          name: ${{ env.message }}
-          draft: false
-          files: ./target/release/governance2-${{ env.tag }}
+      # - name: Rename artifacts
+      #   run: mv ./target/release/governance2 ./target/release/governance2-${{ env.tag }}
+
+      # - name: Create Release
+      #   id: create_release
+      #   uses: softprops/action-gh-release@v1
+      #   with:
+      #     tag_name: ${{ env.tag }}
+      #     name: ${{ env.message }}
+      #     draft: false
+      #     files: ./target/release/governance2-${{ env.tag }}
 
